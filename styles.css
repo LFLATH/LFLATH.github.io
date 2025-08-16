@@ -88,14 +88,16 @@ body {
   border: 1px solid var(--color-primary);
   background-color: var(--color-background-overlay);
   border-radius: 4px;
-  width: 100%;
-  height: 100%;
-  min-height: 98vh;
-  max-height: 105vh;
-  overflow: hidden;
+  width: 100vw;
+  min-height: 100vh;
+  height: 100vh;
+  max-height: none;
+  overflow: auto;
   box-shadow:
     0 20px 25px -5px var(--color-shadow),
     0 8px 10px -6px var(--color-shadow);
+  display: flex;
+  flex-direction: column;
 }
 
 header {
@@ -224,10 +226,13 @@ hr {
 }
 
 /* Terminal input */
+/* Make sure terminal input is always visible above the bottom bar */
 #terminal {
-  height: 55vh;
+  min-height: 70px;
   padding-left: var(--step-0);
   font-size: var(--step-0);
+  position: relative;
+  z-index: 100;
 }
 
 @media (max-width: 726px) {
@@ -259,7 +264,7 @@ hr {
 }
 
 #liner::before {
-  content: "[prithvi@archrx5500m]~$";
+  content: "[ludwigl]~$";
 }
 
 .cursor {
@@ -325,7 +330,7 @@ hr {
   justify-content: space-between;
   align-items: flex-end;
   padding: 0.5rem;
-  z-index: 50;
+  z-index: 999;
   background: transparent;
   pointer-events: none;
 }
